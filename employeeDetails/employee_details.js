@@ -1,7 +1,7 @@
 const employees = [
-      { id: 1, name: 'John Doe', age: 30, department: 'IT', salary: 50000 },
-      { id: 2, name: 'Alice Smith', age: 28, department: 'HR', salary: 45000 },
-      { id: 3, name: 'Bob Johnson', age: 35, department: 'Finance', salary: 60000 },
+      { id: 1, name: 'John Doe', age: 30, department: 'IT', salary: 50000, spec: 'PowerBI'},
+      { id: 2, name: 'Alice Smith', age: 28, department: 'HR', salary: 45000, spec: 'Dismissals'},
+      { id: 3, name: 'Bob Johnson', age: 35, department: 'Finance', salary: 60000, spec:'Concur' },
       //... More employee records can be added here
     ];
 
@@ -29,5 +29,15 @@ function findEmployeeById(employeeId) {
     }
     else{
       document.getElementById('employeesDetails').innerHTML = 'no employee has been found with this ID';
+     }
+ }
+
+ function findEmployeeBySpec(employeeSpec) {
+    const foundEmployee = employees.find(employee => employee.spec === employeeSpec);
+    if (foundEmployee) {
+    document.getElementById('employeesDetails').innerHTML =`<p>${foundEmployee.id}: ${foundEmployee.name}: ${foundEmployee.name} - ${foundEmployee.department} - ${foundEmployee.spec} - $${foundEmployee.salary}</p>`;
+    }
+    else{
+      document.getElementById('employeesDetails').innerHTML = 'no employee has been found with this specialization';
      }
  }
