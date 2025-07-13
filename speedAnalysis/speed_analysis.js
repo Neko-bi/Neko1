@@ -5,6 +5,7 @@ function startTest() {
 // Set the test text
 document.getElementById("inputText").value = testText;
 document.getElementById("userInput").readOnly = false;
+document.getElementById("userInput").value = "";
 
 // Reset results and timer
 document.getElementById("output").innerHTML = "";
@@ -40,6 +41,7 @@ button.onclick = endTest;
             // Display the results
             var outputDiv = document.getElementById("output");
             outputDiv.innerHTML = "<h2>Typing Test Results:</h2>" +
+                "<p>Total Length: " + userTypedText.length + "</p>" +
                 "<p>Words Typed: " + typedWords + "</p>" +
                 "<p>Time Elapsed: " + timeElapsed.toFixed(2) + " seconds</p>" +
                 "<p>Words Per Minute (WPM): " + wpm + "</p>";
@@ -49,3 +51,9 @@ button.onclick = endTest;
             button.innerHTML = "Start Test";
             button.onclick = startTest;
         }
+
+ document.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      endTest();
+    }
+  })
